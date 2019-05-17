@@ -18,9 +18,12 @@ Route::group(['as' => 'front-end.'], function(){
     // });
 
     //Progressive API
-    Route::group(['prefix' => 'api1'], function(){
-        Route::get('cart', 'Api\CartController@index');
-        Route::get('cartsave', 'Api\CartController@store');
+    Route::post("api1/teacherslot/{id}" , "Api\TeacherApiController@getSlots");
+
+    Route::group(['prefix' => 'api1', 'middleware' => "auth"], function(){
+        //Route::get('cart', 'Api\CartController@index');
+        //Route::get('cartsave', 'Api\CartController@store');
+        Route::resource('cart', 'Api\CartController');
     });
 });
 

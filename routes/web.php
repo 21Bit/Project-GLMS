@@ -1,8 +1,10 @@
 <?php
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-
+Route::get("test", function(){
+    return inCart(request()->id) ? 1 : 0;
+});
 // =========  Front-end Route File ========= //
 
 include('web/front-end.php');

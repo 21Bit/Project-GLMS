@@ -172,64 +172,9 @@
                     <!-- BEGIN header-nav -->
                     <div class="header-nav">
                         <ul class="nav pull-right">
-                            {{-- <li class="dropdown dropdown-hover">
-                                <a href="#" class="header-cart" data-toggle="dropdown">
-                                    <i class="fa fa-shopping-bag"></i>
-                                    <span class="total">2</span>
-                                    <span class="arrow top"></span>
-                                </a>
-                    
-                                <div class="dropdown-menu dropdown-menu-cart p-0">
-                                    <div class="cart-header">
-                                        <h4 class="cart-title">Shopping Bag (1) </h4>
-                                    </div>
-                                    <div class="cart-body">
-                                        <ul class="cart-item">
-                                            <li>
-                                                <div class="cart-item-image"><img src="/img/product/product-ipad.jpg" alt="" /></div>
-                                                <div class="cart-item-info">
-                                                    <h4>iPad Pro Wi-Fi 128GB - Silver</h4>
-                                                    <p class="price">$699.00</p>
-                                                </div>
-                                                <div class="cart-item-close">
-                                                    <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="cart-item-image"><img src="/img/product/product-imac.jpg" alt="" /></div>
-                                                <div class="cart-item-info">
-                                                    <h4>21.5-inch iMac</h4>
-                                                    <p class="price">$1299.00</p>
-                                                </div>
-                                                <div class="cart-item-close">
-                                                    <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="cart-item-image"><img src="/img/product/product-iphone.png" alt="" /></div>
-                                                <div class="cart-item-info">
-                                                    <h4>iPhone 6s 16GB - Silver</h4>
-                                                    <p class="price">$649.00</p>
-                                                </div>
-                                                <div class="cart-item-close">
-                                                    <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="cart-footer">
-                                        <div class="row row-space-10">
-                                            <div class="col-xs-6">
-                                                <a href="checkout_cart.html" class="btn btn-default btn-block">View Cart</a>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <a href="checkout_cart.html" class="btn btn-inverse btn-block">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> --}}
-                            {{-- <li class="divider"></li> --}}
+                            @auth
+                                @include('front-end.includes.components.cart-top-menu')
+                            @endif
                             @guest
                                 <li>
                                     <a href="{{ route("login") }}">

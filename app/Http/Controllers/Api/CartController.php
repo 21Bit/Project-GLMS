@@ -17,7 +17,6 @@ class CartController extends Controller
     }
 
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -26,10 +25,28 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = new Cart;
-        $cart->user_id = $request->user()->id;
-        $cart->slot_id = $request->slot_id;
-        $cart->save();
+        $is_slot  = Auth::user()->carts()->where("slot_id", $request->slot_id)->first() ? true : false;
+        
+        if($is_slot){
+            $cart = Cart::where('user_id', Auth::user()->id)->where("slot_id", $request->slot_id)->first();
+            $id = $cart->id;
+            $cart->delete();
+            return ['is_added' => 0, 'id' => $id];
+        }else{
+            //$this->store($request);
+            $cart = new Cart;
+            $cart->user_id = $request->user()->id;
+            $cart->slot_id = $request->slot_id;
+            $cart->save();
+
+            return [
+                'is_added'  => 1,
+                'id'        => $cart->id,
+                'teacher'   => optional($cart->slot->teacher)->name,
+                'date_time' => date('M j,Y h:iA', strtotime($cart->slot->date_time))
+            ];
+        }
+
         //$user = Auth::user()->carts()->sync(['slot_id', $request->slot_id]);
         //$cart = Cart::create([$request->user()->id, $request->slot_id]);
     }

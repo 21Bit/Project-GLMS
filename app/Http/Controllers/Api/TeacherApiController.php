@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Auth;
 use App\Models\Slot;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
