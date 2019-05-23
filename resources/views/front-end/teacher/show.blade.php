@@ -65,7 +65,7 @@
                             <small>You will select slots that available for both you and {{$teacher->name}}. Its easy!</small>
                         </h4> 
                         
-                        <a href="#" class="btn btn-success btn-lg btn-block">Proceed</a>
+                        <a href="/cart" class="btn btn-success btn-lg btn-block">Proceed</a>
                     @else
                         <div>
                             <h4 class="mt-3 mb-5 text-center">

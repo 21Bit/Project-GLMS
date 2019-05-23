@@ -158,7 +158,7 @@
 					</li>
 				</ul>
 			</li>
-			<li class="has-sub ">
+			<li class="has-sub {{ back_end_active_menu('setting', 2) }}">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-cog"></i>
@@ -166,16 +166,16 @@
 				</a>
 				<ul class="sub-menu">
 					<li class="">
-						<a href="/dashboard/v1">General</a>
+						<a href="{{ route('back-end.setting.index', ['type' => 'general']) }}">General</a>
 					</li>
 					<li class="">
-						<a href="/dashboard/v2">Pricing</a>
+						<a href="{{ route('back-end.setting.index', ['type' => 'pricing']) }}">Pricing</a>
 					</li>
 					<li class="">
-						<a href="/dashboard/v2">Payment</a>
+						<a href="{{ route('back-end.setting.index', ['type' => 'payment']) }}">Payment</a>
 					</li>
 					<li class="">
-						<a href="/dashboard/v2">System</a>
+						<a href="{{ route('back-end.setting.index', ['type' => 'system']) }}">System</a>
 					</li>
 				</ul>
 			</li>

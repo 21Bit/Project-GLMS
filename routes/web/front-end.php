@@ -4,6 +4,12 @@
 Route::group(['as' => 'front-end.'], function(){
     Route::get('/', 'FrontEnd\PageController@home');
     
+    //cart
+    Route::get('/cart', 'FrontEnd\CartController@index')->name("cart.index");
+    Route::get('/cart/check-out', 'FrontEnd\CartController@checkout')->name("cart.checkout");
+    Route::delete('/cart/{id}', 'FrontEnd\CartController@remove')->name("cart.remove");
+
+
     //Enrollment
     Route::get('/start', 'FrontEnd\EnrollmentController@selectTeacher')->name("enrollment.start");
     Route::get('/slot', 'FrontEnd\EnrollmentController@selectSlot')->name("enrollment.slot");

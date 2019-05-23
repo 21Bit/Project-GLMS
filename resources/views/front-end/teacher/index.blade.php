@@ -14,7 +14,7 @@
                 <h1 class="page-header"><b>English</b> Teachers</h1>
             </div>
             <!-- END container -->
-        </div>
+    </div>
      <div id="trending-items" class="section-container bg-silver">
         <!-- BEGIN container -->
         <div class="container">

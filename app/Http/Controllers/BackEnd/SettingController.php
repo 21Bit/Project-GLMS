@@ -15,16 +15,16 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
-        $rules = Setting::getValidationRules($request->file);
+        // $rules = Setting::getValidationRules($request->file);
         
-        $data = $this->validate($request, $rules);
+        // $data = $this->validate($request, $rules);
 
-        $validSettings = array_keys($rules);
+        // $validSettings = array_keys($rules);
         
         foreach ($request->all() as $key => $val) {
-            if (in_array($key, $validSettings)) {
+            // if (in_array($key, $validSettings)) {
                 Setting::add($key, $val, Setting::getDataType($key));
-            }
+            // }
         }
 
         return redirect()->back()->with('status', "Setting Saved");

@@ -12,6 +12,7 @@ class Cart extends Model
         return $this->belongsTo(Slot::class);
     }
 
+
     function user()
     {
         return $this->belongsTo(User::class);
