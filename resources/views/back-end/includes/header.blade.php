@@ -27,7 +27,6 @@
 	</div>
 	<!-- end navbar-header -->
 	
-	@includeWhen($headerMegaMenu, 'includes.header-mega-menu')
 	
 	<!-- begin header-nav -->
 	<ul class="navbar-nav navbar-right">

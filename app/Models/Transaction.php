@@ -16,6 +16,17 @@ class Transaction extends Model
         'price', 
         'status', 
         'data', 
-        'data', 
     ];
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    function passCredit(){
+        self::user()->increment('credits', $this->credits);
+    }
+
+    function getDataAttribute($value){
+        return json_decode($value);
+    }
 }

@@ -31,7 +31,7 @@
                     <form method="POST" action="{{ route('login') }}" class="margin-bottom-0">
                         {{ csrf_field() }}
                         <div class="form-group m-b-15 has-error">
-                            <input type="text"  class="form-control form-control-lg" name="username" placeholder="username" required />
+                            <input type="text"  class="form-control form-control-lg" name="username" value="{{ old('username') }}" placeholder="username" required />
                         </div>
                         <div class="form-group m-b-15">
                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required />

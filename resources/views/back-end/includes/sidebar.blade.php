@@ -41,6 +41,24 @@
 			<li class="has-sub ">
 				<a href="javascript:;">
 					<b class="caret"></b>
+					<i class="fa fa-list"></i>
+					<span>Transaction</span>
+				</a>
+				<ul class="sub-menu">
+					<li class="">
+						<a href="/dashboard/v2">Today</a>
+					</li>
+					<li class="">
+						<a href="/dashboard/v2">Pending</a>
+					</li>
+					<li class="">
+						<a href="/dashboard/v2">All Transaction</a>
+					</li>
+				</ul>
+			</li>
+			<li class="has-sub ">
+				<a href="javascript:;">
+					<b class="caret"></b>
 					<i class="fa fa-table"></i>
 					<span>Class Manager</span>
 				</a>
@@ -158,17 +176,20 @@
 					</li>
 				</ul>
 			</li>
-			<li class="has-sub {{ back_end_active_menu('setting', 2) }}">
+			<li class="has-sub {{ back_end_active_menu(['setting', 'credit-package'], 2) }}">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-cog"></i>
 					<span>Settings</span>
 				</a>
 				<ul class="sub-menu">
-					<li class="">
+					<li class="{{ back_end_active_menu(['credit-package'], 2) }}">
+						<a href="{{ route("back-end.credit-package.index") }}">Credit Packages</a>
+					</li>
+					<li class="{{ back_end_active_menu_query("setting", 2, ['type', 'general']) }}">
 						<a href="{{ route('back-end.setting.index', ['type' => 'general']) }}">General</a>
 					</li>
-					<li class="">
+					<li class="{{ back_end_active_menu_query("setting", 2, ['type', 'pricing']) }}">
 						<a href="{{ route('back-end.setting.index', ['type' => 'pricing']) }}">Pricing</a>
 					</li>
 					<li class="">

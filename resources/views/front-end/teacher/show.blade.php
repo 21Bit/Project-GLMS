@@ -121,7 +121,4 @@
 @push("scripts")
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
-<script>
-    loadCalendar()
-</script>
 @endpush    

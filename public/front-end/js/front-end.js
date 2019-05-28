@@ -2889,6 +2889,9 @@ window.Vue = __webpack_require__(191);
 Vue.component('login-component', __webpack_require__(193));
 Vue.component('register-component', __webpack_require__(199));
 
+//Validate
+//window.validate = require("validate.js");
+
 var app = new Vue({
     el: '#page-container'
 });
@@ -2911,65 +2914,66 @@ window.mobilecheck = function () {
 };
 
 var url = $("#calendar").data("url");
-
-$('#calendar').fullCalendar({
-    themeSystem: 'bootstrap4',
-    header: {
-        left: 'prev,next today',
-        center: 'title',
-        // right: 'month,agendaWeek,agendaDay '
-        right: ''
-    },
-    timeFormat: 'hh:mm A', // uppercase H for 24-hour clock
-    weekNumbers: true,
-    lazyFetching: false,
-    defaultView: window.mobilecheck() ? "agendaWeek" : "month",
-    displayEventTime: true, // Display event time
-    eventLimit: true, // allow "more" link when too many events
-    events: function events(start, end, timezone, callback) {
-        axios.post(url, {
-            start: start,
-            end: end
-        }).then(function (response) {
-            var events = [];
-            response.data.data.forEach(function (e) {
-                events.push({
-                    id: e.id,
-                    //title: e.start + "-" + e.end,
-                    start: e.start, // will be parsed
-                    end: e.end, // will be parsed,
-                    className: e.selected ? "btn btn-sm btn-danger p-5 fc-event m-1 border-1" : "btn btn-sm btn-success p-5 fc-event m-1 border-1",
-                    selected: e.selected
+if ($("#calendar").length) {
+    $('#calendar').fullCalendar({
+        themeSystem: 'bootstrap4',
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            // right: 'month,agendaWeek,agendaDay '
+            right: ''
+        },
+        timeFormat: 'hh:mm A', // uppercase H for 24-hour clock
+        weekNumbers: true,
+        lazyFetching: false,
+        defaultView: window.mobilecheck() ? "agendaWeek" : "month",
+        displayEventTime: true, // Display event time
+        eventLimit: true, // allow "more" link when too many events
+        events: function events(start, end, timezone, callback) {
+            axios.post(url, {
+                start: start,
+                end: end
+            }).then(function (response) {
+                var events = [];
+                response.data.data.forEach(function (e) {
+                    events.push({
+                        id: e.id,
+                        //title: e.start + "-" + e.end,
+                        start: e.start, // will be parsed
+                        end: e.end, // will be parsed,
+                        className: e.selected ? "btn btn-sm btn-danger p-5 fc-event m-1 border-1" : "btn btn-sm btn-success p-5 fc-event m-1 border-1",
+                        selected: e.selected
+                    });
                 });
+                callback(events);
+            }).catch(function (error) {
+                console.log(error);
             });
-            callback(events);
-        }).catch(function (error) {
-            console.log(error);
-        });
-    },
-    eventClick: function eventClick(event) {
-        var _this = this;
+        },
+        eventClick: function eventClick(event) {
+            var _this = this;
 
-        var slotnumber = parseInt($("#slotnumber").html());
-        axios.post('/api1/cart', { slot_id: event.id }).then(function (response) {
-            if (response.data.is_added) {
-                _this.className = "btn btn-sm btn-danger fc-event m-1 border-1";
-                _this.selected = true;
-                $("#slotnumber").html(slotnumber + 1);
-                doAddtoCartTopMenu(response.data);
-            } else {
-                _this.className = "btn btn-sm btn-success fc-event m-1 border-1";
-                _this.selected = false;
-                $("#slotnumber").html(slotnumber - 1);
-                $('#cart-li-' + response.data.id).fadeOut();
-            }
-        }).catch(function (error) {
-            if (error.response.status == 401) {
-                $('#myModal').modal("show");
-            }
-        });
-    }
-});
+            var slotnumber = parseInt($("#slotnumber").html());
+            axios.post('/api1/cart', { slot_id: event.id }).then(function (response) {
+                if (response.data.is_added) {
+                    _this.className = "btn btn-sm btn-danger fc-event m-1 border-1";
+                    _this.selected = true;
+                    $("#slotnumber").html(slotnumber + 1);
+                    doAddtoCartTopMenu(response.data);
+                } else {
+                    _this.className = "btn btn-sm btn-success fc-event m-1 border-1";
+                    _this.selected = false;
+                    $("#slotnumber").html(slotnumber - 1);
+                    $('#cart-li-' + response.data.id).fadeOut();
+                }
+            }).catch(function (error) {
+                if (error.response.status == 401) {
+                    $('#myModal').modal("show");
+                }
+            });
+        }
+    });
+}
 
 function doAddtoCartTopMenu(cart) {
     var li = '<li id="cart-li-' + cart.id + '">';
@@ -2985,6 +2989,33 @@ function doAddtoCartTopMenu(cart) {
     li += '</li>';
     $('.cart-body .cart-item').append(li);
 }
+
+$("input.checkbox").change(function () {
+    var currentCredits = parseInt($("#total-credits").html().replace(",", ""));
+    var currentPrice = parseInt($("#total-price").html().replace(",", ""));
+    var credit = parseInt($(this).data('credits'));
+    var price = parseInt($(this).data('price'));
+
+    if (this.checked) {
+        $("#total-credits").html(currentCredits + credit);
+        $("#total-price").html(currentPrice + price);
+    } else {
+        $("#total-credits").html(currentCredits - credit);
+        $("#total-price").html(currentPrice - price);
+    }
+});
+
+$('#bankPaymentForm').submit(function (e) {
+    e.preventDefault();
+    var data = $(this).serialize();
+    var action = $(this).attr("action");
+
+    axios.post(action, data).then(function (response) {
+        window.open('/success?r=' + response.data.reference_number, "_self");
+    }).catch(function (error) {
+        console.log(error);
+    });
+});
 
 /***/ }),
 /* 191 */

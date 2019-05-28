@@ -32,45 +32,7 @@
             <!-- BEGIN col-3 -->
             <div class="col-md-3">
                 <h4 class="footer-header">LATEST PRODUCT</h4>
-                <ul class="list-unstyled list-product">
-                    <li>
-                        <div class="image">
-                            <img src="../assets/img/product/product-iphone-6s.jpg" alt="" />
-                        </div>
-                        <div class="info">
-                            <h4 class="info-title">Iphone 6s</h4>
-                            <div class="price">$1200.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="image">
-                            <img src="../assets/img/product/product-galaxy-s6.jpg" alt="" />
-                        </div>
-                        <div class="info">
-                            <h4 class="info-title">Samsung Galaxy s7</h4>
-                            <div class="price">$850.00</div>
-                        </div>
-                    </li>
-                
-                    <li>
-                        <div class="image">
-                            <img src="../assets/img/product/product-ipad-pro.jpg" alt="" />
-                        </div>
-                        <div class="info">
-                            <h4 class="info-title">Ipad Pro</h4>
-                            <div class="price">$800.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="image">
-                            <img src="../assets/img/product/product-galaxy-note5.jpg" alt="" />
-                        </div>
-                        <div class="info">
-                            <h4 class="info-title">Samsung Galaxy Note 5</h4>
-                            <div class="price">$1200.00</div>
-                        </div>
-                    </li>
-                </ul>
+               
             </div>
             <!-- END col-3 -->
             <!-- BEGIN col-3 -->

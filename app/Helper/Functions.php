@@ -3,11 +3,47 @@
 use App\Models\User;
 use App\Models\Setting;
 use Jenssegers\Agent\Agent;
+use App\Models\CreditPackage;
 use Illuminate\Support\Facades\Auth;
 
 if(! function_exists('hasSlot')){
     function hasSlot(User $user, $datetime){
         return $user->slots()->where('date_time', $datetime)->first();
+    }
+}
+
+
+if(! function_exists('totalCreditPackages')){
+
+}
+
+
+if(! function_exists('totalCreditPackages')){
+    function totalCreditPackages($index){
+        $totalCreditPackages = session("creditPackages")[0];
+        $data['credit'] = 0;
+        $data['price'] = 0;
+        if($totalCreditPackages){
+
+            foreach($totalCreditPackages as $package){
+                $package = CreditPackage::find($package);
+                $data['credit'] += $package->credit;
+                $data['price'] += $package->price;
+            }
+        }
+
+        return $data[$index];
+    }
+}
+
+
+if(! function_exists("increditPackages")){
+    function increditPackages($id){
+        $creditPackages = session("creditPackages")[0];
+        if(count($creditPackages)){
+            return in_array($id, $creditPackages) ? true : false;
+        }   
+        return false;
     }
 }
 
@@ -84,6 +120,18 @@ if(! function_exists('back_end_active_menu'))
             return  in_array(Request::segment($segment), $label) ? $return : '';
         }else{
             return  Request::segment($segment) == $label ? $return : '';
+        }
+    }
+}
+
+if(! function_exists('back_end_active_menu_query'))
+{
+    //retur show
+    function back_end_active_menu_query($label, $segment, $query, $return = 'active'){
+        if(is_array($label)){
+            return  in_array(Request::segment($segment), $label) && Request::get($query[0]) == $query[1] ? $return : '';
+        }else{
+            return  Request::segment($segment) == $label && Request::get($query[0]) == $query[1]  ? $return : '';
         }
     }
 }

@@ -13,6 +13,7 @@
 <link href="/css/style.css" rel="stylesheet" />
 <link href="/css/style-responsive.min.css" rel="stylesheet" />
 <link href="/css/theme/default.css" id="theme" rel="stylesheet" />
+<link href="/front-end/css/front-end.css" id="theme" rel="stylesheet" />
 
 
 @stack("styles")

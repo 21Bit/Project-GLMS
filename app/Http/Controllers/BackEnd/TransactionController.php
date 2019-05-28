@@ -1,27 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\BackEnd;
 
-use App\Models\Transaction;
 use Illuminate\Http\Request;
-use App\Traits\HasTransaction;
 use App\Http\Controllers\Controller;
 
 class TransactionController extends Controller
 {
-    use HasTransaction;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return $this->addTransaction($request->id);
-       // return Transaction::where('user_id', $request->id)->get();
+        //
     }
 
-    
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -31,23 +35,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'count' => 'required'
-        ]);
-        
-        $transaction = new Transaction;
-        $transaction->reference_number = base_convert(time(), 10, 36);
-        $transaction->user_id = $request->user_id;
-        $transaction->count = $request->count;
-        $transaction->processed_by = $request->processed_by;
-        $transaction->payment_method = $request->payment_method;
-        $transaction->payment_gateway = $request->payment_gateway;
-
-        if($request->paymenmt_method == "bank"){
-            
-        }else{
-
-        }
+        //
     }
 
     /**

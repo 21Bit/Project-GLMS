@@ -4,16 +4,26 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth
 
     Route::get("/dashboard", "BackEnd\DashboardController@index")->name("dashboard.index");
 
+    // Transaction
+    Route::resource("transaction", 'BackEnd\TransactionController');
+
+    //Credit Package
+    Route::post('credit-package/deletemultiple', 'BackEnd\CreditPackageController@deletemultiple')->name("credit-package.multidelete");
+    Route::resource("credit-package", "BackEnd\CreditPackageController");
+
     //Contents
     Route::resource('notice', 'BackEnd\NoticeController');
     Route::post('book/deletemultiple', 'BackEnd\BookController@deletemultiple')->name("book.multidelete");
 
+    //Book
     Route::post('book/deletemultiple', 'BackEnd\BookController@deletemultiple')->name("book.multidelete");
     Route::resource('book', 'BackEnd\BookController');
 
+    //Blog
     Route::post('blog/deletemultiple', 'BackEnd\BlogController@multidelete')->name("blog.multidelete");
     Route::resource('blog', 'BackEnd\BlogController');
 
+    //Notice
     Route::post('notice/deletemultiple', 'BackEnd\NoticeController@multidelete')->name("notice.multidelete");
     Route::resource('notice', 'BackEnd\NoticeController');
 

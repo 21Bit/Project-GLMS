@@ -29,10 +29,10 @@
         <div class="cart-footer">
             <div class="row row-space-10">
                 <div class="col-xs-6">
-                    <a href="checkout_cart.html" class="btn btn-default btn-block">View Bag</a>
+                    <a href="/cart" class="btn btn-default btn-block">View Bag</a>
                 </div>
                 <div class="col-xs-6">
-                    <a href="checkout_cart.html" class="btn btn-inverse btn-block">Checkout</a>
+                    <a href="/cart/check-out" class="btn btn-inverse btn-block">Checkout</a>
                 </div>
             </div>
         </div>

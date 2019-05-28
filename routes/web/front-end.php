@@ -4,6 +4,20 @@
 Route::group(['as' => 'front-end.'], function(){
     Route::get('/', 'FrontEnd\PageController@home');
     
+    //Credit
+    // Route::group(['middleware' => 'auth'], function(){
+        
+        Route::get('credits','FrontEnd\CreditController@index')->name("credit.index");
+        Route::post('credits','FrontEnd\CreditController@saveSelection')->name("credit.save");
+        Route::get('credits/checkout','FrontEnd\CreditController@checkout')->name("credit.checkout");
+
+        // Bank Payment
+        Route::post('credits/checkout/bank','FrontEnd\BankPaymentController@storeTransaction')->name("credit.checkout.bank");
+
+        Route::get('success','FrontEnd\TransactionController@success')->name("transaction.success");
+
+    // });
+
     //cart
     Route::get('/cart', 'FrontEnd\CartController@index')->name("cart.index");
     Route::get('/cart/check-out', 'FrontEnd\CartController@checkout')->name("cart.checkout");
