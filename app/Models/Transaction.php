@@ -22,6 +22,10 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
+    function processedBy(){
+        return $this->belongsTo(User::class, 'processed_by');
+    }
+
     function passCredit(){
         self::user()->increment('credits', $this->credits);
     }

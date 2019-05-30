@@ -5,6 +5,9 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth
     Route::get("/dashboard", "BackEnd\DashboardController@index")->name("dashboard.index");
 
     // Transaction
+    Route::post('transaction/deletemultiple', 'BackEnd\TransactionController@deletemultiple')->name("transaction.multidelete");
+    Route::get("transaction/today", 'BackEnd\TransactionController@today')->name("transaction.today");
+    Route::post("transaction/{id}/validated", 'BackEnd\TransactionController@validated')->name("transaction.validated");
     Route::resource("transaction", 'BackEnd\TransactionController');
 
     //Credit Package
@@ -53,6 +56,8 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth
 
 
     //API
-    Route::resource('api/transaction', 'Api\TransactionController');
+    Route::group(['as' => 'back-end.api.', 'prefix' => '/api',], function(){
+        Route::resource('transaction', 'Api\TransactionController');
+    });
 
 });

@@ -38,21 +38,21 @@
 					<span>Dashboard</span>
 				</a>
 			</li>
-			<li class="has-sub ">
+			<li class="has-sub {{ back_end_active_menu('transaction', 2) }}">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-list"></i>
 					<span>Transaction</span>
 				</a>
 				<ul class="sub-menu">
-					<li class="">
-						<a href="/dashboard/v2">Today</a>
+					<li class="{{ back_end_active_menu_query("transaction", 2, ['stat', 'today']) }}">
+						<a href="{{ route('back-end.transaction.index', ['stat' => 'today']) }}">Today</a>
 					</li>
-					<li class="">
-						<a href="/dashboard/v2">Pending</a>
+					<li class="{{ back_end_active_menu_query("transaction", 2, ['stat', 'pending']) }}">
+						<a href="{{ route('back-end.transaction.index', ['stat' => 'pending']) }}">Pending</a>
 					</li>
-					<li class="">
-						<a href="/dashboard/v2">All Transaction</a>
+					<li class="{{ back_end_active_menu_query("transaction", 2, ['stat', '']) }}">
+						<a href="{{ route('back-end.transaction.index') }}">All Transaction</a>
 					</li>
 				</ul>
 			</li>

@@ -25,9 +25,9 @@ Route::group(['as' => 'front-end.'], function(){
 
 
     //Enrollment
-    Route::get('/start', 'FrontEnd\EnrollmentController@selectTeacher')->name("enrollment.start");
-    Route::get('/slot', 'FrontEnd\EnrollmentController@selectSlot')->name("enrollment.slot");
-    Route::get('/finish', 'FrontEnd\EnrollmentController@finish')->name("enrollment.finish");
+    // Route::get('/start', 'FrontEnd\EnrollmentController@selectTeacher')->name("enrollment.start");
+    // Route::get('/slot', 'FrontEnd\EnrollmentController@selectSlot')->name("enrollment.slot");
+    // Route::get('/finish', 'FrontEnd\EnrollmentController@finish')->name("enrollment.finish");
 
     //Teacher
     Route::get("teacher", "FrontEnd\TeacherController@index")->name("teacher.index");
