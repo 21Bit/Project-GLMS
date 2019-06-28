@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+mix.setResourceRoot('../');
 /// ================================================ ///
                /**  Back-end  ****/
 /// ================================================ ///
@@ -22,6 +22,7 @@ mix.styles([
    "resources/back-end-assets/css/orange.js",
 ], 'public/back-end/css/vendor.css');
 
+
 /// ================================================ ///
                /** End of Back-end  ****/
 /// ================================================ ///
@@ -30,8 +31,23 @@ mix.styles([
 /// ================================================ ///
                /**  Front-end  ****/
 /// ================================================ ///
+mix.js('resources/assets/js/teacher.js', 'public/teacher/js')
+   .sass('resources/assets/sass/teacher.scss', 'public/teacher/css');
+   
+
+/// ================================================ ///
+               /**  Front-end  ****/
+/// ================================================ ///
 mix.js('resources/assets/js/front-end.js', 'public/front-end/js')
    .sass('resources/assets/sass/front-end.scss', 'public/front-end/css');
+
+
+mix.js('resources/assets/js/student.js', 'public/student/js')
+   .sass('resources/assets/sass/student.scss', 'public/student/css');
+
+// mix.js('resources/assets/js/student-new.js', 'public/student/js')
+//    .sass('resources/assets/sass/student-new.scss', 'public/student/css');
+
 
 // mix.styles([
 //    "resources/front-end-assets/css/bootstrap.min.css",

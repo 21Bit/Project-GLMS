@@ -44,15 +44,59 @@
 				<span class="label">5</span>
 			</a>
 			<ul class="dropdown-menu media-list dropdown-menu-right">
-				<li class="dropdown-header">NOTIFICATIONS (5)</li>
+				<li class="dropdown-header">NOTIFICATIONS (1)</li>
 				<li class="media">
 					<a href="javascript:;">
 						<div class="media-left">
-							<i class="fa fa-bug media-object bg-silver-darker"></i>
+							<img src="http://127.0.0.1:8000/images/placeholders/male-sm.png" alt="">
 						</div>
 						<div class="media-body">
-							<h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+							<h6 class="media-heading">Has Send Message <i class="fa fa-circle text-success"></i></h6>
 							<div class="text-muted f-s-11">3 minutes ago</div>
+						</div>
+					</a>
+				</li>
+				<li class="media">
+					<a href="javascript:;">
+						<div class="media-left">
+							<img src="http://127.0.0.1:8000/images/placeholders/male-sm.png" alt="">
+						</div>
+						<div class="media-body">
+							<h6 class="media-heading">Make Message for Administrator</h6>
+							<div class="text-muted f-s-11">5 minutes ago</div>
+						</div>
+					</a>
+				</li>
+				<li class="media">
+					<a href="javascript:;">
+						<div class="media-left">
+							<img src="http://127.0.0.1:8000/images/placeholders/male-sm.png" alt="">
+						</div>
+						<div class="media-body">
+							<h6 class="media-heading">Had made Transaction</h6>
+							<div class="text-muted f-s-11">9 minutes ago</div>
+						</div>
+					</a>
+				</li>
+				<li class="media">
+					<a href="javascript:;">
+						<div class="media-left">
+							<img src="http://127.0.0.1:8000/images/placeholders/male-sm.png" alt="">
+						</div>
+						<div class="media-body">
+							<h6 class="media-heading">Had made Transaction</h6>
+							<div class="text-muted f-s-11">12 minutes ago</div>
+						</div>
+					</a>
+				</li>
+				<li class="media">
+					<a href="javascript:;">
+						<div class="media-left">
+							<img src="http://127.0.0.1:8000/images/placeholders/male-sm.png" alt="">
+						</div>
+						<div class="media-body">
+							<h6 class="media-heading">Had made Transaction</h6>
+							<div class="text-muted f-s-11">13 minutes ago</div>
 						</div>
 					</a>
 				</li>
@@ -83,6 +127,7 @@
 				<img src="/back-end/img/user/user-13.jpg" alt="" /> 
 				<span class="d-none d-md-inline">Jofie Bernas</span> <b class="caret"></b>
 			</a>
+			
 			<div class="dropdown-menu dropdown-menu-right">
 				<a href="javascript:;" class="dropdown-item">Edit Profile</a>
 				<a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>

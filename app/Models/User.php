@@ -22,16 +22,38 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    function slots(){
+    public function slots(){
         return $this->hasMany(Slot::class);
     }
 
 
-    function carts(){
+    public function carts(){
         return $this->hasMany(Cart::class);
     }
 
-    function classes($type = "teacher"){
+
+    public function isCreditValid(){
+        $currentCredits = $this->credits;
+        $cartCredits = $this->getTotalCartCredits();
+        if($currentCredits >= $cartCredits){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public function getTotalCartCredits()
+    {
+        if(setting('pricing_type') == "per_slot"){
+            return  self::carts()->count() * setting("slot_price");
+        }else{
+            return 0;
+        }
+    }
+
+
+    public function classes($type = "teacher"){
         if($type=="teacher"){
             return  $this->slots()->has("student")->get();
         }else{
@@ -39,7 +61,8 @@ class User extends Authenticatable
         }
     }
 
-    function uploadPicture(Request $request, $basecode = false, $image = ""){
+
+    public function uploadPicture(Request $request, $basecode = false, $image = ""){
         if($basecode){
             $picture = time().'.png';
             $picture_path = public_path('thumbnail/'. $picture);
@@ -56,7 +79,7 @@ class User extends Authenticatable
     }
 
 
-    function getPicturePath($bigSize = true)
+    public function getPicturePath($bigSize = true)
     {
         if($bigSize){
             if($this->picture){
@@ -74,7 +97,8 @@ class User extends Authenticatable
         return $path;
     }
 
-    function clearPicture($deleteFile = true, $location = ''){
+
+    public function clearPicture($deleteFile = true, $location = ''){
         
         if($this->picture){
             if($location){
@@ -100,7 +124,7 @@ class User extends Authenticatable
     }
 
 
-    function getSlots($weeknumber){
+    public function getSlots($weeknumber){
         $dates = CarbonPeriod::create( $this->getFirstDate($weeknumber), $this->getSecondDate($weeknumber) );
         $data = array();
        
@@ -120,12 +144,14 @@ class User extends Authenticatable
         return $data;
     }
    
-    function getFirstDate($weekNumber){
+
+    public function getFirstDate($weekNumber){
         $now = Carbon::now();
         return $now->setISODate($now->year, $weekNumber)->startOfWeek()->format('Y-m-d');
     }
 
-    function getSecondDate($weekNumber){
+    
+    public function getSecondDate($weekNumber){
         $now = Carbon::now();
         return $last_day = $now->setISODate($now->year, $weekNumber + 1)->endOfWeek()->format('Y-m-d');
     }

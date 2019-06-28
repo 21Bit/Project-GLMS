@@ -15,8 +15,8 @@
 					</div>
 					<div class="info">
 						<b class="caret pull-right"></b>
-						Jofie Bernas
-						<small>Web Developer</small>
+						{{ Auth::user()->name }}
+						<small>Administrator</small>
 					</div>
 				</a>
 			</li>
@@ -45,38 +45,38 @@
 					<span>Transaction</span>
 				</a>
 				<ul class="sub-menu">
-					<li class="{{ back_end_active_menu_query("transaction", 2, ['stat', 'today']) }}">
+					<li class="{{ back_end_active_menu("transaction", 2, 'active',  ['stat', 'today']) }}">
 						<a href="{{ route('back-end.transaction.index', ['stat' => 'today']) }}">Today</a>
 					</li>
-					<li class="{{ back_end_active_menu_query("transaction", 2, ['stat', 'pending']) }}">
+					<li class="{{ back_end_active_menu("transaction", 2, 'active',  ['stat', 'pending']) }}">
 						<a href="{{ route('back-end.transaction.index', ['stat' => 'pending']) }}">Pending</a>
 					</li>
-					<li class="{{ back_end_active_menu_query("transaction", 2, ['stat', '']) }}">
+					<li class="{{ back_end_active_menu("transaction", 2, 'active',  ['stat', '']) }}">
 						<a href="{{ route('back-end.transaction.index') }}">All Transaction</a>
 					</li>
 				</ul>
 			</li>
-			<li class="has-sub ">
+			<li class="has-sub {{ back_end_active_menu('class', 2) }}">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-table"></i>
 					<span>Class Manager</span>
 				</a>
 				<ul class="sub-menu">
-					<li class="">
-						<a href="/dashboard/v1">Today</a>
+					<li class="{{ back_end_active_menu("class", 2, 'active', ['status', 'today']) }}">
+						<a href="{{ route('back-end.class.index', ['status' => "today"]) }}">Today</a>
 					</li>
 					<li class="">
 						<a href="/dashboard/v2">New</a>
 					</li>
-					<li class="">
-						<a href="/dashboard/v2">Create</a>
+					<li class="{{ back_end_active_menu('create', 3, 'active') }}">
+						<a href="{{ route('back-end.class.create') }}">Create</a>
 					</li>
-					<li class="">
-						<a href="/dashboard/v2">All Class</a>
+					<li class="{{ back_end_active_menu('class', 2, 'active' , ['status', '']) }}">
+						<a href="{{ route('back-end.class.index') }}">All Class</a>
 					</li>
-					<li class="">
-						<a href="/dashboard/v2">Postponed</a>
+					<li class="{{ back_end_active_menu("class", 2, 'active', ['status', 'postponed']) }}">
+						<a href="{{ route('back-end.class.index', ['status' => "postponed"]) }}">Postponed</a>
 					</li>
 				</ul>
 			</li>
@@ -131,6 +131,21 @@
 					</li>
 				</ul>
 			</li>
+			<li class="has-sub {{ back_end_active_menu('message', 2) }}">
+				<a href="javascript:;">
+					<b class="caret"></b>
+					<i class="fa fa-envelope"></i>
+					<span>Message</span>
+				</a>
+				<ul class="sub-menu">
+					<li class="">
+						<a href="{{ route("back-end.message.index", ['for' => 'student']) }}">From Student</a>
+					</li>
+					<li class="">
+						<a href="{{ route("back-end.message.index",['for' => 'teacher']) }}">For Teacher</a>
+					</li>
+				</ul>
+			</li>
 			<li class="has-sub {{ back_end_active_menu('book', 2) }}">
 				<a href="javascript:;">
 					<b class="caret"></b>
@@ -176,20 +191,23 @@
 					</li>
 				</ul>
 			</li>
-			<li class="has-sub {{ back_end_active_menu(['setting', 'credit-package'], 2) }}">
+			<li class="has-sub {{ back_end_active_menu(['setting', 'credit-package', 'creteria'], 2) }}">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-cog"></i>
 					<span>Settings</span>
 				</a>
 				<ul class="sub-menu">
+					<li class="{{ back_end_active_menu(['creteria'], 2) }}">
+						<a href="{{ route("back-end.creteria.index") }}">Creteria</a>
+					</li>
 					<li class="{{ back_end_active_menu(['credit-package'], 2) }}">
 						<a href="{{ route("back-end.credit-package.index") }}">Credit Packages</a>
 					</li>
-					<li class="{{ back_end_active_menu_query("setting", 2, ['type', 'general']) }}">
+					<li class="{{ back_end_active_menu("setting", 2, 'active', ['type', 'general']) }}">
 						<a href="{{ route('back-end.setting.index', ['type' => 'general']) }}">General</a>
 					</li>
-					<li class="{{ back_end_active_menu_query("setting", 2, ['type', 'pricing']) }}">
+					<li class="{{ back_end_active_menu("setting", 2, 'active', ['type', 'pricing']) }}">
 						<a href="{{ route('back-end.setting.index', ['type' => 'pricing']) }}">Pricing</a>
 					</li>
 					<li class="">

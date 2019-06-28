@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth"], function(){
+Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => ["auth", "admin"]], function(){
 
     Route::get("/dashboard", "BackEnd\DashboardController@index")->name("dashboard.index");
 
@@ -13,6 +13,11 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth
     //Credit Package
     Route::post('credit-package/deletemultiple', 'BackEnd\CreditPackageController@deletemultiple')->name("credit-package.multidelete");
     Route::resource("credit-package", "BackEnd\CreditPackageController");
+
+    Route::delete('/comment/{id}', 'BackEnd\CommentController@destroy')->name('comment.destroy');
+
+    Route::post('creteria/deletemultiple', 'BackEnd\CreteriaController@deletemultiple')->name("creteria.multidelete");
+    Route::resource("creteria", "BackEnd\CreteriaController");
 
     //Contents
     Route::resource('notice', 'BackEnd\NoticeController');
@@ -47,6 +52,12 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth
     Route::get('teacher/{id}/profile', 'BackEnd\TeacherController@profile')->name("teacher.profile");
     Route::resource('teacher', 'BackEnd\TeacherController');
 
+    //Messages 
+    Route::resource('message', 'BackEnd\MessageController')->except(['create', 'store']);
+    Route::post('message/{id}', 'BackEnd\MessageController@sendComment')->name('message.sendComment');
+
+
+
     Route::post('holiday/multidelete', 'BackEnd\HolidayController@multidelete')->name("holiday.multidelete");
     Route::resource('holiday', 'BackEnd\HolidayController');
 
@@ -57,7 +68,9 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => "auth
 
     //API
     Route::group(['as' => 'back-end.api.', 'prefix' => '/api',], function(){
-        Route::resource('transaction', 'Api\TransactionController');
+        // Route::resource('transaction', 'Api\TransactionApiController');
+        Route::get('select2teacher', 'Api\TeacherApiController@select2Teacher');
+        Route::get('select2student', 'Api\TeacherApiController@select2Student');
     });
 
 });

@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Setting;
 use Jenssegers\Agent\Agent;
+use App\Models\CreteriaRate;
 use App\Models\CreditPackage;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +13,27 @@ if(! function_exists('hasSlot')){
     }
 }
 
+if(! function_exists('getRate')){
+    function getRate($user_id, $slot_id, $creteria_id){
+        $rate = CreteriaRate::where("user_id", $user_id)->where("slot_id", $slot_id)->where('creteria_id', $creteria_id)->first();
+        return $rate ? $rate->rate : Null;
+    }
+}
 
-if(! function_exists('totalCreditPackages')){
+
+
+
+if(! function_exists('creditPerSlot')){
+
+    function creditPerSlot(){
+        
+       if(setting('pricing_type') == "per_slot"){
+            return setting("slot_price");
+        }else{
+            
+        }
+
+    }
 
 }
 
@@ -56,7 +76,7 @@ if(! function_exists('getDashBoardLink')){
             }else if(Auth::user()->type == "teacher"){
                 return url("teacher/dashboard");
             }else{
-                return url("student/dashboard");
+                return url("my-page/dashboard");
             }
         }
     }
@@ -115,26 +135,23 @@ if(! function_exists('menuHighLighter')){
 if(! function_exists('back_end_active_menu'))
 {
     //retur show
-    function back_end_active_menu($label, $segment, $return = 'active'){
+    function back_end_active_menu($label, $segment, $return = 'active', $query = ""){
         if(is_array($label)){
-            return  in_array(Request::segment($segment), $label) ? $return : '';
+            if($query){
+                return  in_array(Request::segment($segment), $label) && Request::get($query[0]) == $query[1] ? $return : '';
+            }else{
+                return  in_array(Request::segment($segment), $label) ? $return : '';
+            }
         }else{
-            return  Request::segment($segment) == $label ? $return : '';
+            if($query){
+                return  Request::segment($segment) == $label && Request::get($query[0]) == $query[1]  ? $return : '';
+            }else{
+                return  Request::segment($segment) == $label ? $return : '';
+            }
         }
     }
 }
 
-if(! function_exists('back_end_active_menu_query'))
-{
-    //retur show
-    function back_end_active_menu_query($label, $segment, $query, $return = 'active'){
-        if(is_array($label)){
-            return  in_array(Request::segment($segment), $label) && Request::get($query[0]) == $query[1] ? $return : '';
-        }else{
-            return  Request::segment($segment) == $label && Request::get($query[0]) == $query[1]  ? $return : '';
-        }
-    }
-}
 
 if(!function_exists('dateFormat')){
     function dateFormat($format, $date){
@@ -192,7 +209,7 @@ if(!function_exists('timeSequence'))
     {
         $hour = 06;
         $min = 30;
-        $end = 24;
+        $end = 25;
 
         $result_array = array();
 
@@ -206,11 +223,11 @@ if(!function_exists('timeSequence'))
                         $min = "00";
                     }
 
-                    $time = $hour . ":". $min  . ":00";
+                    $time = $hour . ":". $min;
                     
                     if($hour + 1 >= $end)
                     {
-                        $last_time =  $hour . ":00:00";
+                        $last_time =  $hour . ":00";
                         array_push($result_array, $last_time);
                         break;
                     }else{

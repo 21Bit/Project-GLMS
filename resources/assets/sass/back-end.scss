@@ -10,6 +10,7 @@
 @import '~pretty-checkbox/src/pretty-checkbox.scss';
 @import '~fullcalendar/dist/fullcalendar.css';
 @import '~croppie/croppie.css';
+@import '~select2/src/scss/core';
 
 
 /* The switch - the box around the slider */
@@ -73,5 +74,16 @@
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  .teacher-class-panel-body{
+    .teacher-change-link{
+      display:none;
+
+    
+    }
+    &:hover .teacher-change-link{
+      display:inline-block;
+    }
   }
 

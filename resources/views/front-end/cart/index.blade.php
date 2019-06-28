@@ -18,45 +18,95 @@
     <div id="trending-items" class="section-container bg-silver">
         <!-- BEGIN container -->
         <div class="container">
-            {{-- <div class="text-right mb-2">
-                <a href="#" class="btn btn-lg btn-success">Checkout</a>
-            </div> --}}
-            <div class="panel panel-forum">
-                <!-- begin panel-heading -->
-                <div class="panel-heading text-right">
-                   <a href="/cart/check-out" class="btn btn-lg btn-success">Checkout</a>
+    
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="panel panel-forum">
+                        <div class="panel-heading">
+                            Instructor's Slot
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Instructor</th>
+                                        <th>Date</th>
+                                        <th>Credits</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($carts as $cart)
+                                        <tr>
+                                            <td>
+                                                <img src="{{ optional($cart->slot->teacher)->getPicturePath(false) }}" class="img img-circle mr-3" alt="" />
+                                                <a target="_blank" href="{{ route('front-end.teacher.show', $cart->slot->teacher->username) }}">{{ optional($cart->slot->teacher)->name }} </a>
+                                            </td>
+                                            <td>
+                                                <span class="total-post">{{ date('h:iA', strtotime($cart->slot->date_time)) }}</span> <span class="divider">/</span> <span class="total-comment">{{ date('M j, Y', strtotime($cart->slot->date_time)) }}</span>
+                                            </td>
+                                            <td>
+                                                {{ creditPerSlot() }}
+                                            </td>
+                                            <td align="center">
+                                                    <a href="#" onclick="if(confirm('Are you sure to delete?')){ $('#form-{{ $cart->id }}').submit()  }" class="text-danger"><i class="fa fa-remove"></i></a>
+                                                    <form id="form-{{ $cart->id }}" action="{{ route('front-end.cart.remove', $cart->id) }}" method="post">
+                                                        @csrf
+                                                        @method("DELETE")
+                                                    </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>   
                 </div>
-                <!-- end panel-heading -->
-                <!-- begin forum-list -->
-                <ul class="forum-list">
-                    @foreach($carts as $cart)
-                        <li>
-                            <div class="media">
-                                <img src="{{ $cart->slot->teacher->getPicturePath() }}" alt="" />
-                            </div>
-                            <div class="info-container">
-                                <div class="info">
-                                    <h4 class="title"><a href="{{ route('front-end.teacher.show', $cart->slot->teacher->username) }}">{{ optional($cart->slot->teacher)->name }}</a></h4>
-                                    <!-- <p class="desc">
-                                        The latest official news, events , announcements, updates and other information released .
-                                    </p> -->
+                <div class="col-sm-4">
+                    <div class="panel panel-forum">
+                        <!-- begin panel-heading -->
+                        <div class="panel-heading">
+                            Summary
+                        </div>
+                        <div class="panel-body">
+                            <div class="row  text-center">
+                                <div class="col-xs-6">
+                                    <h1>{{ Auth::user()->getTotalCartCredits() }}</h1>
+                                    <label for="">Total Bag Credits</label>
                                 </div>
-                                <div class="total-count">
-                                 <span class="total-post">{{ date('h:iA', strtotime($cart->slot->date_time)) }}</span> <span class="divider">/</span> <span class="total-comment">{{ date('M j, Y', strtotime($cart->slot->date_time)) }}</span>
-                                    {{-- <span class="total-post">{{ date('M j, Y', strtotime($cart->slot->date_time)) }}</span> --}}
-                                </div>
-                                <div class="latest-post text-right">
-                                    <button onclick="if(confirm('Are you sure to delete?')){ $('#form-{{ $cart->id }}').submit()  }" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i> Remove</button>
-                                    <form id="form-{{ $cart->id }}" action="{{ route('front-end.cart.remove', $cart->id) }}" method="post">
-                                        @csrf
-                                        @method("DELETE")
-                                    </form>
+                                <div class="col-xs-6">
+                                    <h1>{{ Auth::user()->credits }}</h1>
+                                    <label for="">My Current Credits</label>
                                 </div>
                             </div>
-                        </li>
-                    @endforeach
-                </ul>
+                        </div>
+                    </div>
+                    @if(Auth::user()->credits < 1)
+                        <div class=" mt-2 mb-4">
+                            <div class="text-danger mb-2">
+                                You have no credits to continue. Please purchase first according to your needs to place your classes.
+                            </div>
+                            To purchase more credits, <a href="/credits">click here </a>
+                        </div>
+                    @else
+                        <div class=" mt-2 mb-4">
+                            <div class="mb-2">
+                                <div class="mb-2">
+                                    Note: {{ Auth::user()->getTotalCartCredits() }} credits will be deducted to your current credits upon this purchase.  
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="text-right">
+                        <form action="{{ route('front-end.cart.place') }}" method="post">
+                            @csrf
+                            <button @if(Auth::user()->credits < 1) disabled @endif class="btn btn-success btn-lg p-3">BUY WITH CREDITS</button>
+                        </form>
+                    </div>
+                        
+                </div>
             </div>
+      
                    
         </div>
     </div>

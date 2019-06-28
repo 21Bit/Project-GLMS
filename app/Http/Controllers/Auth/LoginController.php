@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,13 +26,24 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/back-end/dashboard';
 
 
     public function username(){
         return "username";
     }
-    
+
+    protected function authenticated(Request $request, $user)
+    {
+        if($user->type == "administrator"){
+            return redirect()->route('back-end.dashboard.index');
+        }else if( $user->type == 'teacher'){
+            return redirect()->route('teacher.dashboard.index');
+        }else{
+            return redirect()->route('student.dashboard.index');
+        }
+    }
+
     /**
      * Create a new controller instance.
      *

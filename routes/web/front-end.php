@@ -19,9 +19,11 @@ Route::group(['as' => 'front-end.'], function(){
     // });
 
     //cart
-    Route::get('/cart', 'FrontEnd\CartController@index')->name("cart.index");
-    Route::get('/cart/check-out', 'FrontEnd\CartController@checkout')->name("cart.checkout");
-    Route::delete('/cart/{id}', 'FrontEnd\CartController@remove')->name("cart.remove");
+    Route::get('/bag/success', 'FrontEnd\CartController@success')->name("cart.success");
+    Route::post('/bag/place', 'FrontEnd\CartController@placeClass')->name("cart.place");
+    Route::get('/bag', 'FrontEnd\CartController@index')->name("cart.index");
+    Route::get('/bag/check-out', 'FrontEnd\CartController@checkout')->name("cart.checkout");
+    Route::delete('/bag/{id}', 'FrontEnd\CartController@remove')->name("cart.remove");
 
 
     //Enrollment
@@ -30,8 +32,8 @@ Route::group(['as' => 'front-end.'], function(){
     // Route::get('/finish', 'FrontEnd\EnrollmentController@finish')->name("enrollment.finish");
 
     //Teacher
-    Route::get("teacher", "FrontEnd\TeacherController@index")->name("teacher.index");
-    Route::get("teacher/{username}", "FrontEnd\TeacherController@show")->name("teacher.show");
+    Route::get("teachers", "FrontEnd\TeacherController@index")->name("teacher.index");
+    Route::get("teachers/{username}", "FrontEnd\TeacherController@show")->name("teacher.show");
 
     // Route::get("test", function(){
     //    return Auth::user()->carts()->where("slot_id", 53)->first() ? 1 : 2;

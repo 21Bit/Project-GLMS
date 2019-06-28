@@ -70,7 +70,7 @@ window.mobilecheck = function() {
                                 //title: e.start + "-" + e.end,
                                 start: e.start, // will be parsed
                                 end: e.end, // will be parsed,
-                                className: e.selected ? "btn btn-sm btn-danger p-5 fc-event m-1 border-1" : "btn btn-sm btn-success p-5 fc-event m-1 border-1" ,
+                                className: e.selected ? "btn rounded-0 btn-xs btn-danger p-1 fc-event m-1 border-1" : "btn rounded-0 btn-xs btn-success p-1 fc-event m-1 border-1" ,
                                 selected: e.selected,
                             });
                         })
@@ -98,7 +98,7 @@ window.mobilecheck = function() {
                     })
                     .catch( error => {
                         if(error.response.status == 401){
-                            $('#myModal').modal("show");
+                            $('#loginRegisterModal').modal("show");
                         }
                     })
             

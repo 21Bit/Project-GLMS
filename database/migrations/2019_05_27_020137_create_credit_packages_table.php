@@ -20,6 +20,7 @@ class CreateCreditPackagesTable extends Migration
             $table->boolean("feature")->default(0);
             $table->text("note")->nullable();
             $table->integer("user_id")->nullable()->unsigned();
+            $table->boolean("featured")->default(0);
             $table->timestamps();
         });
     }

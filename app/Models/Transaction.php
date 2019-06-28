@@ -18,19 +18,19 @@ class Transaction extends Model
         'data', 
     ];
 
-    function user(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
-    function processedBy(){
+    public function processedBy(){
         return $this->belongsTo(User::class, 'processed_by');
     }
 
-    function passCredit(){
+    public function passCredit(){
         self::user()->increment('credits', $this->credits);
     }
 
-    function getDataAttribute($value){
+    public function getDataAttribute($value){
         return json_decode($value);
     }
 }

@@ -12,6 +12,7 @@
         "laravel/tinker": "~1.0",
         "renatomarinho/laravel-page-speed": "^1.8",
         "spatie/laravel-sluggable": "^2.1",
+        "unisharp/laravel-filemanager": "~1.8",
         "yajra/laravel-datatables-html": "^3.0",
         "yajra/laravel-datatables-oracle": "^8.0"
     },

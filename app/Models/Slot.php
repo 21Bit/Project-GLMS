@@ -6,10 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slot extends Model
 {
-    function student(){
-        return $this->belongsTo(User::class, 'student');    
+    public function student(){
+        return $this->belongsTo(User::class, 'student_id');    
     }
-    function teacher(){
+
+    public function teacher(){
         return $this->belongsTo(User::class, 'user_id');    
     }
+
+    public function mistakes(){
+        return $this->hasMany(Mistake::class);
+    }
+    
 }

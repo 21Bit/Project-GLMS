@@ -27,6 +27,8 @@
         <!-- BEGIN #footer -->
         @include("front-end.includes.footer")
         <!-- END #footer -->
+
+        @include('front-end.includes.components.login-modal')
     
         <!-- BEGIN #footer-copyright -->
         @include("front-end.includes.copyright")

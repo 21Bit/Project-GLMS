@@ -1,0 +1,140 @@
+@import "~bootstrap-scss/bootstrap";
+@import "~fullcalendar/dist/fullcalendar.css";
+
+// @import "~perfect-scrollbar/css/perfect-scrollbar.css";
+
+@import "now-ui-dashboard/variables";
+@import "now-ui-dashboard/mixins";
+
+// Plugins CSS
+@import "now-ui-dashboard/plugins/plugin-animate-bootstrap-notify";
+
+// Core CSS
+@import "now-ui-dashboard/buttons";
+@import "now-ui-dashboard/inputs";
+@import "now-ui-dashboard/typography";
+@import "now-ui-dashboard/misc";
+@import "now-ui-dashboard/checkboxes-radio";
+
+// components
+@import "now-ui-dashboard/navbar";
+@import "now-ui-dashboard/page-header";
+@import "now-ui-dashboard/dropdown";
+@import "now-ui-dashboard/alerts";
+@import "now-ui-dashboard/images";
+@import "now-ui-dashboard/nucleo-outline";
+@import "now-ui-dashboard/tables";
+@import "now-ui-dashboard/sidebar-and-main-panel";
+@import "now-ui-dashboard/footers";
+@import "now-ui-dashboard/fixed-plugin";
+
+// cards
+@import "now-ui-dashboard/cards";
+@import "now-ui-dashboard/cards/card-plain";
+@import "now-ui-dashboard/cards/card-chart";
+@import "now-ui-dashboard/cards/card-user";
+@import "now-ui-dashboard/cards/card-map";
+
+@import "now-ui-dashboard/responsive";
+
+.fc-day-grid-event {
+  cursor: pointer;
+  &:hover {
+    .fc-content {
+      color: #fff;
+    }
+  }
+}
+
+.fc-day-grid-event .fc-content {
+  padding: 5px;
+  color: #d8d8d8;
+
+  .fc-time {
+    font-size: 11px !important;
+    display: block;
+  }
+
+  .fc-title {
+    font-size: 12px !important;
+  }
+}
+
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+
+  input {
+    display: none;
+  }
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+.dropdown-notification {
+  font-size: 12px;
+
+  a {
+    position: relative;
+    color: #525252;
+    padding-left: 10px;
+
+    span {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: #9e9e9e;
+      font-size: 10px;
+    }
+  }
+}
+
+#sidebar-wrapper {
+  ul li.active .menu-badge {
+    background-color: #f96332;
+    color: white;
+  }
+
+  .menu-badge {
+    // padding: 3px 15px 4px 15px;
+    text-align: center;
+    width: 28px;
+    height: 28px;
+    background-color: #fff;
+    color: #f96332;
+    font-size: 10px;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    bottom: 1px;
+  }
+}

@@ -5,10 +5,23 @@
         <div class="carousel-inner"> 
             <!-- BEGIN item -->
             <div class="item active">
-                <img src="/img/slider/slider-1-cover.jpg" class="bg-cover-img" alt="" />
-                <div class="container">
-                    <img src="https://www.livemytraining.com/wp-content/uploads/2018/07/kk.png" class="product-img right bottom fadeInRight animated" alt="" />
+                <img src="/images/sliders/1.jpg" class="bg-cover-img" alt="" />
+                {{-- <div class="container">
+                    <img src="/images/sliders/1.jpg" class="product-img right bottom fadeInRight animated" alt="" />
+                </div> --}}
+                <div class="carousel-caption carousel-caption-left">
+                    <div class="container">
+                        <h3 class="title m-b-5 fadeInLeftBig animated">Start Now</h3> 
+                        <p class="m-b-15 fadeInLeftBig animated">We have competetive online english <br>instructors who can guide you <br> from zero to master</p>
+                        <a href="#" class="btn btn-success-outline btn-lg fadeInLeftBig animated">Get Started</a>
+                    </div>
                 </div>
+            </div>
+            <div class="item">
+                <img src="/images/sliders/3.jpg" class="bg-cover-img" alt="" />
+                {{-- <div class="container">
+                    <img src="/images/sliders/1.jpg" class="product-img right bottom fadeInRight animated" alt="" />
+                </div> --}}
                 <div class="carousel-caption carousel-caption-left">
                     <div class="container">
                         <h3 class="title m-b-5 fadeInLeftBig animated">Start Now</h3> 
@@ -49,12 +62,12 @@
             <!-- END item -->
         </div>
         <!-- END carousel-inner -->
-        {{-- <a class="left carousel-control" href="#main-carousel" data-slide="prev"> 
+        <a class="left carousel-control" href="#main-carousel" data-slide="prev"> 
             <i class="fa fa-angle-left"></i> 
         </a>
         <a class="right carousel-control" href="#main-carousel" data-slide="next"> 
             <i class="fa fa-angle-right"></i> 
-        </a> --}}
+        </a>
     </div>
     <!-- END carousel -->
 </div>

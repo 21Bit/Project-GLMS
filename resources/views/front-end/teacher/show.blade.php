@@ -65,7 +65,7 @@
                             <small>You will select slots that available for both you and {{$teacher->name}}. Its easy!</small>
                         </h4> 
                         
-                        <a href="/cart" class="btn btn-success btn-lg btn-block">Proceed</a>
+                        <a href="/bag" class="btn btn-success btn-lg btn-block">Proceed</a>
                     @else
                         <div>
                             <h4 class="mt-3 mb-5 text-center">
@@ -96,23 +96,8 @@
         </div>
         <!-- END container -->
     </div>
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-           <div class="account-container">
-                <div class="account-sidebar">
-                    <div class="account-sidebar-cover">
-                        <img src="/images/covers/login-modal-bg.jpg" alt="" />
-                    </div>
-                    <div class="account-sidebar-content">
-                        <login-component></login-component>
-                    </div>
-                </div>
-                <div class="account-body">
-                   <register-component></register-component>    
-                </div>
-            </div>
-          </div>
-      </div>
+    
+
 @endsection
 
 @push("styles")

@@ -28,11 +28,8 @@
         </div>
         <div class="cart-footer">
             <div class="row row-space-10">
-                <div class="col-xs-6">
-                    <a href="/cart" class="btn btn-default btn-block">View Bag</a>
-                </div>
-                <div class="col-xs-6">
-                    <a href="/cart/check-out" class="btn btn-inverse btn-block">Checkout</a>
+                <div class="col-xs-12">
+                    <a href="/bag" class="btn btn-inverse btn-block">View Bag</a>
                 </div>
             </div>
         </div>

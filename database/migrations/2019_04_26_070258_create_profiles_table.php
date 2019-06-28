@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration
             $table->text('overview')->nullable();
             $table->text('full_details')->nullable();
             $table->timestamps();
+
         });
     }
 

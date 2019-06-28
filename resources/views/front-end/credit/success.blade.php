@@ -33,8 +33,6 @@
                                 </tr>
                             </table>
                             <ul class="nav nav-list">
-
-                                <li>Credits: </li>
                                 <li>Price: ${{ number_format($transaction->price) }}</li>
                                 <li>Payment Method: {{ strtoupper($transaction->payment_method) }}</li>
 
@@ -52,7 +50,7 @@
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-lg btn-block p-4 mt-5 mb-2 btn-info">My Dashboard</button>
+                            <a href="{{ getDashBoardLink() }}" class="btn btn-lg btn-block p-4 mt-5 mb-2 btn-info">My Dashboard</a>
                             or back to <a href="/">Homepage</a>
                         </div>
                     </div>

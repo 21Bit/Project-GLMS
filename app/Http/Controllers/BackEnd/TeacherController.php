@@ -49,7 +49,7 @@ class TeacherController extends Controller
         }
   
       $html = $builder->columns([
-          [
+            [
               'data' => 'check',
               'name' => '',
               'title' => '<input type="checkbox" id="checkAll" >',
@@ -58,41 +58,38 @@ class TeacherController extends Controller
               'searchable'     => false,
               'exportable'     => false,
               'printable'      => true,
-          ],
-      
-          [
+            ],
+            [
               'data' => 'picture', 
               'name' => 'picture', 
               'title' => "Picture"
-          ],
-          [
+            ],
+            [
               'data' => 'username', 
               'name' => 'username', 
               'title' => "Username"
-          ],
-          [
+            ],
+            [
               'data' => 'name', 
               'name' => 'name', 
               'title' => "Name"
-          ],
-          [
+            ],
+            [
               'data' => 'gender', 
               'name' => 'gender', 
               'title' => "Gender"
-          ],
-          [
+            ],
+            [
               'data' => 'email', 
               'name' => 'email', 
               'title' => "Email"
-          ],
-          [
+            ],
+            [
               'data' => 'dob', 
               'name' => 'dob', 
               'title' => "Birthdate"
-          ],
-       
-        
-          [
+            ],
+            [
               'defaultContent' => '',
               'data'           => 'action',
               'name'           => 'action',
@@ -103,7 +100,7 @@ class TeacherController extends Controller
               'exportable'     => false,
               'printable'      => true,
               'footer'         => '',
-          ],
+            ],
   
       ]);
   
