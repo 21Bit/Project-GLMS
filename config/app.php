@@ -153,6 +153,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\HtmlServiceProvider::class,
+        Bernas\VideoWare\VideoWareServiceProvider::class,
         /*
          * Application Service Providers...
          */

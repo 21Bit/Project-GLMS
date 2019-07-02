@@ -56,9 +56,20 @@ class ClassController extends Controller
      */
     public function show($id)
     {
+        
         $class = Slot::findOrFail($id);
         $student = Auth::user();
         $creterias = Creteria::where("active", 1)->get();
+
+        protected $userId = "";
+        protected $username = "";
+        protected $confcode = "";
+        protected $conftype = "";
+        protected $usertype = "";
+        
+        $videoware = new VideoWare;
+        $videoware->userId($student->username);
+        $videoware->userId($student->username);
         return view('student-end.class.show', compact('class', 'student', 'creterias'));
     }
 

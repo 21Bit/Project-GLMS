@@ -18,6 +18,25 @@
        <div id="about-us-cover" class="section-container">
             <div class="container">
                 <div class="row">
+                <div class="col-sm-4">
+                    <div class="box shadow p-5">
+                        <div class="input-group">
+                            <input type="text" placeholder="COUPON CODE" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="fa fa-plus fa-lg"></i></button>
+                            </span>
+                        </div><!-- /input-group -->
+                        <h3>Summary</h3>
+                        <h3 class="text-warning" id="total-credits">{{ number_format(totalCreditPackages('credit')) }}</h3>
+                        <label class="text-muted">Credits</label>
+                        <hr>
+                        
+                        <h3 class="text-warning" >$<span id="total-price">{{ number_format(totalCreditPackages('price')) }}</span></h3>
+                        <label class="text-muted">Price</label>
+                        <hr>
+                        You want to add more credit?<br> <a href="{{ route('front-end.credit.index') }}">Back to Credit Page</a>
+                        </div>
+                    </div>
                     <div class="col-sm-8">
                         @auth
 
@@ -43,7 +62,7 @@
                                                 <div class="info">
                                                     <h4 class="title">Paypal Payment</h4>
                                                     <p class="desc">Worlds secured and hassle-free payment gateway. You will be redirect to paypal page to proceed the payment and goes back here if the payment success.</p>
-                                                    <button class="btn btn-success btn-lg"> Pay Paypal</button>
+                                                    <button class="btn btn-success btn-lg"> Proceed</button>
                                                 </div>
                                             </div> 
                                         </div>
@@ -89,7 +108,7 @@
                                                                 </p>
                                                                 <br />
                                                                 <p>
-                                                                    <button type='submit' class="btn btn-success"> Submit</button>   
+                                                                    <button type='submit' class="btn btn-success btn-lg"> Place Payment</button>   
                                                                 </p>
                                                             </form>
                                                         </div>
@@ -119,25 +138,7 @@
                             <br>
                         @endif
                     </div>
-                    <div class="col-sm-4">
-                        <div class="box shadow p-5">
-                            <div class="input-group">
-                                <input type="text" placeholder="COUPON CODE" class="form-control">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="fa fa-plus fa-lg"></i></button>
-                                </span>
-                            </div><!-- /input-group -->
-                            <h3>Summary</h3>
-                            <h3 class="text-warning" id="total-credits">{{ number_format(totalCreditPackages('credit')) }}</h3>
-                            <label class="text-muted">Credits</label>
-                            <hr>
-                            
-                            <h3 class="text-warning" >$<span id="total-price">{{ number_format(totalCreditPackages('price')) }}</span></h3>
-                            <label class="text-muted">Price</label>
-                            <hr>
-                            You want to add more credit?<br> <a href="{{ route('front-end.credit.index') }}">Back to Credit Page</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
