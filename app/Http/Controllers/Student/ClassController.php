@@ -6,6 +6,7 @@ use Auth;
 use App\Models\Slot;
 use App\Models\Creteria;
 use Illuminate\Http\Request;
+use Bernas\VideoWare\VideoWare;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Student\SlotCollection;
 
@@ -61,16 +62,21 @@ class ClassController extends Controller
         $student = Auth::user();
         $creterias = Creteria::where("active", 1)->get();
 
-        protected $userId = "";
-        protected $username = "";
-        protected $confcode = "";
-        protected $conftype = "";
-        protected $usertype = "";
+        // protected $userId = "";
+        // protected $username = "";
+        // protected $confcode = "";
+        // protected $conftype = "";
+        // protected $usertype = "";
         
         $videoware = new VideoWare;
         $videoware->userId($student->username);
         $videoware->userId($student->username);
-        return view('student-end.class.show', compact('class', 'student', 'creterias'));
+        $videoware_url = $videoware->generateUrl();
+        return view('student-end.class.show', compact('class', 'student', 'creterias', 'videoware_url'));
+    }
+
+    public function cancelClass($id){
+        
     }
 
     /**

@@ -15,14 +15,14 @@ class ClassController extends Controller
 {
     public function index(Builder $builder)
     {
-
-            if(request()->status == "ready"){
-                $classes = Slot::where('student_id', '!=', null)->get();
-            }else if(request()->status == "today"){
-                $classes = Slot::whereDate('date_time', date('Y-m-d'))->where('student_id', '!=', null)->get();
-            }else{
-                $classes = Slot::where('student_id', '!=', null)->get();
-            }
+        
+        if(request()->status == "ready"){
+            $classes = Slot::where('student_id', '!=', null)->get();
+        }else if(request()->status == "today"){
+            $classes = Slot::whereDate('date_time', date('Y-m-d'))->where('student_id', '!=', null)->get();
+        }else{
+            $classes = Slot::where('student_id', '!=', null)->get();
+        }
        
 
         if (request()->ajax()) {         

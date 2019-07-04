@@ -1,0 +1,4 @@
+<a href="{{ route('back-end.setting.index', ['type' => 'general']) }}" class="btn btn-white @if(Request::get('type') == "general") btn-success @else btn-white @endif">General</a>
+<a href="{{ route('back-end.setting.index', ['type' => 'pricing']) }}" class="btn  @if(Request::get('type') == "pricing") btn-success @else btn-white @endif">Pricing</a>
+<a href="{{ route('back-end.setting.index', ['type' => 'payment']) }}" class="btn  @if(Request::get('type') == "payment") btn-success @else btn-white @endif">Payment</a>
+<a href="{{ route('back-end.setting.index', ['type' => 'system']) }}" class="btn  @if(Request::get('type') == "system") btn-success @else btn-white @endif">System</a>

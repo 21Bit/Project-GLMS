@@ -2,17 +2,13 @@
 
 @section('title', 'All Notice')
 
-@push('css')
-	<link href="/back-end/plugins/datatables/css/dataTables.bootstrap4.css" rel="stylesheet" />
-	<link href="/back-end/plugins/datatables/css/fixedHeader/fixedHeader.bootstrap4.min.css" rel="stylesheet" />
-	<link href="/back-end/plugins/datatables/css/responsive/responsive.bootstrap4.css" rel="stylesheet" />
-@endpush
+
 
 @section('content')
 	<!-- begin breadcrumb -->
 	<ol class="breadcrumb pull-right">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item active">All Notices</li>
+		<li class="breadcrumb-item active">Settings / Pricing</li>
 	</ol>
 	<!-- end breadcrumb -->
 
@@ -24,10 +20,7 @@
 	<div class="row">
 		<div class="col-lg-12">
             <div class="mb-3">
-                <a href="{{ route('back-end.setting.index', ['type' => 'general']) }}" class="btn btn-white ">General</a>
-                <a href="{{ route('back-end.setting.index', ['type' => 'pricing']) }}" class="btn btn-success">Pricing</a>
-                <a href="{{ route('back-end.setting.index', ['type' => 'payment']) }}" class="btn btn-white">Payment</a>
-                <a href="{{ route('back-end.setting.index', ['type' => 'system']) }}" class="btn btn-white">System</a>
+           @include('back-end.includes.component.setting-menu')
             </div>
 
             <form method="post" action="{{ route('back-end.setting.store') }}">

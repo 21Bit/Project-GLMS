@@ -1,6 +1,6 @@
 @extends('layouts.student')
 
-@section('title', "My Page | Classes")
+@section('title', "My Class | " . optional($class->teacher)->name)
 
 @section('header')
     <div class="panel-header panel-header-sm">
@@ -31,7 +31,7 @@
                                         <div class="panel-body teacher-class-panel-body">
                                             <div class="d-flex">
                                                 <div class="pr-3 pl-3 pt-2">
-                                                    <img src="{{ $class->teacher->getPicturePath(false) }}" class="mw-100 rounded-circle mr-2" alt="">
+                                                    <img src="{{ optional($class->teacher)->getPicturePath(false) }}" class="mw-100 rounded-circle mr-2" alt="">
                                                 </div>
                                                 <div>
                                                     <h5 class="mb-0"><a class="text-info" href="{{ route('front-end.teacher.show', optional($class->teacher)->username) }}" target="_blank" class="mb-0 text-inverse">{{  $class->teacher->name }}</a></h5>
@@ -96,13 +96,12 @@
                             
                             <div class="text-right mb-2 mt-0">
                                 
-                                <a href="{{ route('student.class.index') }}" class="btn btn-primary btn-lg"><i class="now-ui-icons media-1_camera-compact"></i> Start Room</a>
+                                <a href="{{ $videoware_url }}" class="btn btn-primary btn-lg"><i class="now-ui-icons media-1_camera-compact"></i> Start Room</a>
                                 @if($class->attendance_status == 'ready')
                                     <span class="dropdown class-settings">
                                         <button class="btn btn-lg" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i></button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" href="#"><i class="fa fa-ban"></i> Cancel Class</a>
-                                            <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete Class</a>
                                         </div>
                                     </span>
                                 @endif
