@@ -32,6 +32,45 @@ class TeacherApiController extends Controller
         return $data;
     }
 
+    public function getTeacherInClass($id){
+
+        $class = Slot::findOrFail($id);
+        $teacher =  $class->teacher;
+
+        $data = array(
+            'id'                => $teacher->id,
+            'username'          => $teacher->username,
+            'name'              => $teacher->name,
+            'contact_number'    => $teacher->contact_number,
+            'picture'           => $teacher->getPicturePath(false),
+        );
+
+        return $class->teacher ? $data : Null;
+    }
+
+    public function changeTeacher(Request $request, $id){
+        $class = Slot::findOrFail($id);
+        $class->user_id = $request->teacher_id;
+        $class->save();
+
+        if(request()->ajax()){
+            $teacher =  $class->teacher;
+
+            return array(
+                'id'                => $teacher->id,
+                'username'          => $teacher->username,
+                'name'              => $teacher->name,
+                'contact_number'    => $teacher->contact_number,
+                'picture'           => $teacher->getPicturePath(false),
+            );   
+
+        }else{
+
+            return back();
+
+        }
+    }
+
 
     function select2Student(Request $request){
         $teachers = User::where('type', 'student')->where("username", 'LIKE', '%' . $request->q . '%')->orWhere("name", 'LIKE', '%' . $request->q .'%')->take(30)->get();

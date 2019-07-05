@@ -71,6 +71,9 @@ Route::group(['as' => 'back-end.', 'prefix' => 'back-end', 'middleware' => ["aut
         // Route::resource('transaction', 'Api\TransactionApiController');
         Route::get('select2teacher', 'Api\TeacherApiController@select2Teacher');
         Route::get('select2student', 'Api\TeacherApiController@select2Student');
+        Route::post('getclassteacher/{id}', 'Api\TeacherApiController@getTeacherInClass');
+        Route::post('changeteacher/{id}', 'Api\TeacherApiController@changeTeacher');
+
     });
 
 });

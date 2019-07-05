@@ -32,11 +32,12 @@ if (token) {
  window.Vue = require('vue');
 
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('class-teacher', require('./components/back-end/class/ClassTeacher.vue'));
 
-// const app = new Vue({
-//     el: '#content'
-// });
+const vueApp = new Vue({
+    el: '#content'
+});
+
 $('#select2').select2();
 
 $('#select2teacher').select2({
@@ -92,4 +93,27 @@ $('.remove-comment').click(function(){
                 console.log(error)
             })
     }
+})
+
+$('.teacher-change-link').click(function(){
+    $('#class-teacher-form').show()
+})
+
+$('[data-modal="delete"]').click(function(e){
+    e.preventDefault();
+    $('#deleteModalUlr').val($(this).data('url'))
+    $('#deleteModalRedirectUlr').val($(this).data('redirectUrl'))
+    $('#delete-modal').modal('show')
+})
+
+$('#deleteModalBtn').click(function(){
+    var url = $('#deleteModalUlr').val()
+    var redirectUrl = $('#deleteModalRedirectUlr').val()
+    axios.delete(url)
+        .then( response =>{
+            window.open(redirectUrl, 'self')
+        })
+        .catch( error => {
+            
+        })
 })

@@ -13,7 +13,7 @@
 	<!-- end breadcrumb -->
 
 	<!-- begin page-header -->
-	<h1 class="page-header">Setting</h1>
+	<h1 class="page-header">Settings</h1>
 	<!-- end page-header -->
 	
 	<!-- begin row -->

@@ -1,6 +1,6 @@
 @extends('layouts.back-end')
 
-@section('title', 'All Notice')
+@section('title', 'Settings: Payment')
 
 @push('css')
 	<link href="/back-end/plugins/datatables/css/dataTables.bootstrap4.css" rel="stylesheet" />
@@ -12,12 +12,12 @@
 	<!-- begin breadcrumb -->
 	<ol class="breadcrumb pull-right">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item active">All Notices</li>
+		<li class="breadcrumb-item active">Settings / Payment</li>
 	</ol>
 	<!-- end breadcrumb -->
 
 	<!-- begin page-header -->
-	<h1 class="page-header">Setting</h1>
+	<h1 class="page-header">Settings</h1>
 	<!-- end page-header -->
 	
 	<!-- begin row -->
@@ -34,13 +34,13 @@
                         <div class="panel panel-inverse">
                             <div class="panel-body">
                                 <p>
-                                    <label for="">Pricing Type</label>
+                                    <label for="">Default Payment Gateway</label>
                                     <p class="desc">
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus placeat aperiam voluptatem illum quam sed culpa sapiente, ullam sit laborum dolore nam soluta, sint odit, harum quod doloremque commodi esse!
                                     </p>
-                                    <select name="pricing_type" id="" class="form-control">
-                                        <option value="per_slot">Per Slot</option>
-                                        <option @if( old('name', setting('pricing_type')) == "package" ) selected  @endif   value="package">Package</option>
+                                    <select name="default_payment_gateway" id="" class="form-control">
+                                        <option value="paypal">PayPal</option>
+                                        <option @if( old('default_payment_gateway', setting('default_payment_gateway')) == "iamport" ) selected  @endif   value="iamport">I am Port</option>
                                     </select>
                                 </p>
                             </div>
@@ -48,11 +48,44 @@
                         <div class="panel panel-inverse">
                             <div class="panel-body">
                                 <p>
-                                    <label for="">Price</label>
+                                    <label for="">PayPal</label>
                                     <p class="desc">
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus placeat aperiam voluptatem illum quam sed culpa sapiente, ullam sit laborum dolore nam soluta, sint odit, harum quod doloremque commodi esse!
+                                       PayPal Holdings, Inc. is an American company operating a worldwide online payments system that supports online money transfers and serves as an electronic alternative to traditional paper methods like checks and money orders.
                                     </p>
-                                    <input value="{{ old('name', setting('slot_price')) }}" name="slot_price" type="text" place="price" class="form-control">
+                                    <p>
+                                        <label for="">Sandbox Account</label>
+                                        <input value="{{ old('paypal_sandbox_account', setting('paypal_sandbox_account')) }}" name="paypal_sandbox_account" type="text" class="form-control">
+                                    </p>
+                                    <p>
+                                        <label for="">Client ID</label>
+                                        <input value="{{ old('paypal_client_id', setting('paypal_client_id')) }}" name="paypal_client_id" type="text" class="form-control">
+                                    </p>
+                                    <p>
+                                        <label for="">Secret Key</label>
+                                        <input value="{{ old('paypal_secret_key', setting('paypal_secret_key')) }}" name="paypal_secret_key" type="text" class="form-control">
+                                    </p>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="panel panel-inverse">
+                            <div class="panel-body">
+                                <p>
+                                    <label for="">I am Port</label>
+                                    <p class="desc">
+                                       PayPal Holdings, Inc. is an American company operating a worldwide online payments system that supports online money transfers and serves as an electronic alternative to traditional paper methods like checks and money orders.
+                                    </p>
+                                    <p>
+                                        <label for="">Store Code</label>
+                                        <input value="{{ old('iamport_store_code', setting('iamport_store_code')) }}" name="iamport_store_code" type="text" place="price" class="form-control">
+                                    </p>
+                                    <p>
+                                        <label for="">Rest API Key</label>
+                                        <input value="{{ old('iamport_rest_api_key', setting('iamport_rest_api_key')) }}" name="iamport_rest_api_key" type="text" place="price" class="form-control">
+                                    </p>
+                                    <p>
+                                        <label for="">REST API Key</label>
+                                        <input value="{{ old('iamport_rest_api_key', setting('iamport_rest_api_key')) }}" name="iamport_rest_api_key" type="text" place="price" class="form-control">
+                                    </p>
                                 </p>
                             </div>
                         </div>

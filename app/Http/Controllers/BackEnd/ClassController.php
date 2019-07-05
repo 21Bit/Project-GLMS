@@ -156,6 +156,8 @@ class ClassController extends Controller
         return view("back-end.class.show", compact("class", 'student', 'creterias'));
     }
 
+
+
     function edit($id){
         $class = Slot::findOrFail($id);
         return view("back-end.class.edit", compact("class"));
@@ -188,5 +190,17 @@ class ClassController extends Controller
 
         return back()->with("message", "Changes updated!");
     }   
+
+    public function destroy($id){
+        
+        $slot  = Slot::findOrFail($id);
+        $slot->mistakes()->delete();
+        $slot->delete();
+
+        if(!request()->ajax()){
+            return redirect()->route('back-end.class.index');
+        }
+
+    }
    
 }

@@ -28,10 +28,10 @@
                             </div>
                             <div class="text-right w-50">
                                 <div class="dropdown show">
-                                    <button class="btn btn-secondary" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i></button>
+                                    <button class="btn btn-secondary bg-white text-dark border-0" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i></button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-ban"></i> Cancel Class</a>
-                                        <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete Class</a>
+                                        <a class="dropdown-item" onclick="if(confirm('Are you sure to cancel the class?')){ alert('hehe') }" href="#"><i class="fa fa-ban"></i> Cancel Class</a>
+                                        <a class="dropdown-item" data-modal="delete" data-redirectUrl="{{ route('back-end.class.index') }}" data-url="{{ route('back-end.class.destroy', $class->id) }}" href="#"><i class="fa fa-trash"></i> Delete Class</a>
                                     </div>
                                 </div>
                             </div>
@@ -55,37 +55,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="panel panel-inverse">
-                            <div class="panel-body teacher-class-panel-body">
-                                <div class="d-flex">
-                                    <div>
-                                        <img src="{{ $class->teacher->getPicturePath(false) }}" class="mw-100 rounded-circle mr-2" alt="">
-                                    </div>
-                                    <div>
-                                        <div><a href="{{ route('back-end.teacher.show', $class->teacher->id) }}" target="_blank" class="mb-0 text-inverse">{{  $class->teacher->name }}</a></div>
-                                        <small>Teacher  &nbsp;&nbsp;&nbsp;<a href="#"  data-toggle="modal" data-target="#teacherModal" class="teacher-change-link">Change</a></small>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    
-                                    <form action="">
-                                        <h5>Change Teacher</h5>
-                                        <p>
-                                            <label for="">Teacher</label>
-                                            <select name="teacher_id" id="select2teacher" style="width:100%"></select>
-                                        </p>
-                                        <p>
-                                            <button class="btn btn-success" type="submit">Submit</button>
-                                        </p>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
+                        <class-teacher session="{{ $class->id }}" />
                     </div>
                 </div>
             
@@ -131,7 +101,7 @@
         </div>
     </form>
 
-    
+@include('back-end.includes.component.delete-modal')    
 @endsection
 
 @push('scripts')
